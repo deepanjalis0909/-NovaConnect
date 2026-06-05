@@ -94,7 +94,7 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Shalvi-Rastogi/Novaconnect.git
+https://github.com/deepanjalis0909/-NovaConnect.git
 ```
 
 ### 2. Navigate to Project Directory
@@ -162,6 +162,7 @@ NOVACONNECT/
 │   └── package-lock.json
 │
 └── README.md
+
 ```
 
 ---
