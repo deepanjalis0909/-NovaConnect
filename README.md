@@ -59,16 +59,32 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](images/Chat_Interface.png)
+![Home Page](Screenshots/Home_page.png)
 
-### Buyer Dashboard
+### Sign Up Page
+![Sign Up Page](Screenshots/signup_page.png)
+
+### Forgot Password
+![Forgot Password](Screenshots/forgot_password.png)
 
 ### Seller Dashboard
+![Seller Dashboard](Screenshots/seller3.png)
 
-### Admin Dashboard
+### Add Products
+![Add Products](Screenshots/seller1.png)
 
 ### Product Listing Page
+![Product Listing Page](Screenshots/seller2.png)
 
+### Buyer Dashboard
+![Buyer Dashboard](Screenshots/Buyer_db.png)
+
+### Orders Management
+![Orders Management](Screenshots/orders.png)
+
+### Admin Dashboard
+![Admin Dashboard](Screenshots/admin1.png)
+![Admin Dashboard](Screenshots/admin2.png)
 
 
 ---
