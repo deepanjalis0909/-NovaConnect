@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("C:/Users/deepa/OneDrive/Pictures/Screenshots/Screenshot 2026-01-04 202255.png") center/cover no-repeat;
+      padding: 20px;
+    }
+
+
+
+
+   
+  .container {
+    text-align: center; background: #e2dfdfdd;
+    padding: 100px 150px;
+    border-radius: 20px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+     max-width: 600px; width: 100%;
+     
+     animation: fadeIn 1s ease-in-out;
+    }
+
+
+
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #333;
+    }
+
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+
+    .btn {
+      flex: 1;
+      min-width: 150px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+
+    .links {
+      margin-top: 10px;
+    }
+
+
+    .links a {
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 15px;
+      color: #2575fc;
+      transition: color 0.3s ease;
+    }
+
+
+    .links a:hover {
+      color: #6a11cb;
+      text-decoration: underline;
+    }
+    .logo {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+
+    .subtitle {
+      margin-bottom: 20px;   /* reduce space */
+      font-size: 14px;
+      color: #555;
+    }
+
+
+
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="container">
+    <div class="login-card">
+    <div class="header">
+      <img src="C:\Users\deepa\OneDrive\Pictures\Screenshots\Screenshot 2026-01-05 141107.png" alt="NovaConnect Logo" class="logo">
+      <h1 class="title">Welcome to NovaConnect</h1>
+      <p class="subtitle">By students, For students</p>
+    </div>
+    <div class="btn-group">
+       <a href="signinpage(final).html">
+      <button class="btn">Signin as Admin</button><br>
+
+
+      <button class="btn">Signin as Seller</button><br>
+
+
+      <button class="btn">Signin as Buyer</button><br>
+       </a>
+    </div>
+    <div class="links">
+      <a href="login(final).html">Login</a> <br>
+     
+    </div>
+  </div>
+</body>
+</html>

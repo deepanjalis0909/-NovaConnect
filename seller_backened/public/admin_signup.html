@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Signup</title>
+
+  <!-- Font Awesome (standard icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffffdd;
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      max-width: 380px;
+      width: 100%;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #333;
+      margin: 5px 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      color: #555;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 40px 10px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: #6a11cb;
+    }
+
+    .eye-btn {
+      position: absolute;
+      right: 12px;
+      top: 36px;
+      cursor: pointer;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .signup-btn:hover {
+      opacity: 0.95;
+    }
+
+    .required {
+  color: red;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>NovaConnect</h1>
+    <h2>Admin Signup</h2>
+
+    <form id="adminForm">
+      <div class="input-group">
+        <label for="name">Full Name<span class="required">*</label>
+        <input type="text" id="name" placeholder="Enter your full name" required />
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email<span class="required">*</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your Banasthali email"
+          pattern="^[a-zA-Z0-9._%+-]+@banasthali\.in$"
+          title="Email must end with @banasthali.in"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password<span class="required">*</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+        <i class="fa-solid fa-eye eye-btn" onclick="togglePassword('password', this)"></i>
+      </div>
+
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password<span class="required">*</label>
+        <input
+          type="password"
+          id="confirm-password"
+          placeholder="Re-enter your password"
+          required
+        />
+        <i class="fa-solid fa-eye eye-btn" onclick="togglePassword('confirm-password', this)"></i>
+      </div>
+
+      <button type="submit" class="signup-btn">Create account</button>
+     
+    </form>
+  </div>
+
+  <script>
+    function togglePassword(inputId, icon) {
+      const input = document.getElementById(inputId);
+
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    }
+
+    document.getElementById("adminForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+
+      const nameRegex = /^[A-Za-z\s]+$/;
+
+      if (!nameRegex.test(name)) {
+        alert("Name should not contain numbers or special characters");
+        return;
+      }
+
+            if (password !== confirmPassword) {
+              alert("Passwords do not match");
+              return;
+            }
+
+
+            const easyPasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+      if (!easyPasswordRegex.test(password)) {
+        alert("Password must be at least 8 characters and contain letters and numbers.");
+        return;
+      }
+      
+
+      const data = { name, email, password };
+
+      try {
+        const response = await fetch("http://localhost:3000/admin/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message);
+          window.location.href = "admin_dashboard.html";
+        } else {
+          alert(result.message);
+        }
+      } catch (err) {
+        alert("Server error");
+      }
+    });
+  </script>
+</body>
+</html>

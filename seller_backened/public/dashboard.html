@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1 id="welcome">Welcome!</h1>
+    <a href="/logout">Logout</a>
+
+    <script>
+        // Get username from URL query (simplest way for learning)
+        const params = new URLSearchParams(window.location.search);
+        const user = params.get('user');
+        if (user) {
+            document.getElementById('welcome').innerText = `Welcome ${user}`;
+        }
+    </script>
+</body>
+</html>

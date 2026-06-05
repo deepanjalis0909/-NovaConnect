@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - NovaConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      color: #2C2F24;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .main-nav {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border: 2px solid #2C2F24;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-btn {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #f8f9ff 0%, #e8ebf7 100%);
+    }
+
+    .services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 3rem;
+      color: #2C2F24;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .services-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 60px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      color: #2C2F24;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: #666;
+      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Contact CTA Section */
+    .contact-cta {
+      padding: 120px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      text-align: center;
+      color: white;
+    }
+
+    .contact-cta h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-cta p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .contact-btn {
+      background: white;
+      color: #667eea;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: #2C2F24;
+      color: white;
+      padding: 50px 0 30px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 0 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: #DBDFD0;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+    }
+
+    .footer-section a:hover {
+      color: #DBDFD0;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 20px;
+      }
+
+      .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .services {
+        padding: 60px 0;
+      }
+
+      .services-container {
+        padding: 0 20px;
+      }
+
+      .services h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .service-card {
+        padding: 30px 20px;
+      }
+
+      .contact-cta {
+        padding: 60px 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+        padding: 0 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services h2 {
+        font-size: 1.8rem;
+      }
+
+      .service-card {
+        padding: 25px 15px;
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-content">
+      <div class="logo-text">NovaConnect</div>
+      <a href="novaconnect_2ndpage.html" class="nav-btn">Back to Home</a>
+    </div>
+  </nav>
+  
+  <!-- Services Section -->
+  <section class="services">
+    <div class="services-container">
+      <h2>Our Services</h2>
+      <p class="services-subtitle">Everything you need for seamless student-to-student commerce</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🛍️</div>
+          <h3>Easy Buying</h3>
+          <p>Browse through thousands of products listed by fellow students. Find everything at student-friendly prices from handmade crafts to innovative products.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏪</div>
+          <h3>Business Platform</h3>
+          <p>Perfect platform for students who want to start their own business. List your products, set your prices, and reach customers within your campus community.</p>
+        </div>
+      
+        <div class="service-card">
+          <div class="service-icon">🔒</div>
+          <h3>Secure Transactions</h3>
+          <p>All transactions are monitored and verified. Our campus-based community ensures trust and safety for all users and business owners.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Business Analytics</h3>
+          <p>Track your sales, monitor customer preferences, and grow your student business with our built-in analytics and reporting tools.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Quick Setup</h3>
+          <p>Get your student business online in minutes. Easy-to-use interface designed specifically for student entrepreneurs and campus delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="contact-cta">
+    <h3>Ready to Start Your Business?</h3>
+    <p>Join hundreds of student entrepreneurs already growing their businesses on NovaConnect</p>
+    <button class="contact-btn" onclick="goToMain()">Get Started Today</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>NovaConnect</h3>
+        <p>The trusted marketplace for student entrepreneurs. Built by students, for students.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="novaconnect_2ndpage.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <a href="#">Help Center</a>
+        <a href="#">Safety Tips</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📧 support@novaconnect.com</p>
+        <p>📞 9876637485</p>
+        <p>📍 Campus Center, Room 101</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 NovaConnect. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function goToMain() {
+      window.location.href = 'novaconnect_2ndpage.html#cta';
+    }
+  </script>
+</body>
+</html>

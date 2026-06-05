@@ -1,0 +1,57 @@
+REQUIRED SOFTWARE
+
+
+1. Frontend Development
+HTML5
+CSS3
+JavaScript
+React.js
+Purpose:
+Used to design the user interface and create interactive web pages.
+
+2. Backend Development
+Node.js
+Express.js
+Purpose:
+Used to create the server, handle APIs, and manage communication between frontend and database.
+
+3. Database Management System
+MySQL (Version 8.0+)
+Purpose:
+Stores and manages data such as users, products, orders, and reviews.
+
+4. Code Editor / IDE
+Visual Studio Code
+Purpose:
+Used for writing, editing, and managing the project code efficiently.
+
+5. Package Manager
+npm (Node Package Manager)
+Purpose:
+Used to install and manage project dependencies and libraries.
+
+6. API Testing Tool
+Postman
+Purpose:
+Used to test backend APIs and ensure proper functionality.
+
+7. Version Control
+Git / GitHub
+Purpose:
+Used for code backup, version tracking, and team collaboration.
+
+8. Authentication & Security
+JWT (JSON Web Token)
+bcrypt
+Purpose:
+Ensures secure user authentication and password encryption.
+
+9. File Upload Handling
+Multer
+Purpose:
+Used to handle file uploads such as product images.
+
+10. Email Service
+Nodemailer
+Purpose:
+Used to send OTPs and password reset emails.

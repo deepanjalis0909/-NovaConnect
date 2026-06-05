@@ -59,33 +59,15 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](Screenshots/Home_page.png)
-
-### Sign up Page
-![Sign Up Page](Screenshots/signup_page.png)
-
-### Forgot Password
-![Forgot Password](Screenshots/forgot_password.png)
-
-### Seller Dashboard
-![Seller Dashboard ](Screenshots/seller3.png)
-
-### Add Products
-![Add Products ](Screenshots/seller1.png)
-
-### Product Listing Page
-![Product Listing Page ](Screenshots/seller2.png)
+![Home Page](images/Chat_Interface.png)
 
 ### Buyer Dashboard
-![ Buyer Dashboard](Screenshots/Buyer_db.png)
 
-### Order Management
-![ Order Management](Screenshots/orders.png)
+### Seller Dashboard
 
 ### Admin Dashboard
-![ Admin Dashboard](Screenshots/admin1.png)
-![ Admin Dashboard](Screenshots/admin2.png)
 
+### Product Listing Page
 
 
 
@@ -140,7 +122,7 @@ http://localhost:3000/novaconnect_2ndpage.html
 ## 📂 Project Structure
 
 ```text
-PROJECT_NOVA/
+NOVACONNECT/
 │
 ├── seller_backend/
 │   ├── public/

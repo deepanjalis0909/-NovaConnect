@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        min-height: 100vh;
+        padding: 20px;
+        color: #fff;
+    }
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+   .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+  .card {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+    .card h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 1.6em;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+       font-weight: 600;
+  letter-spacing: 0.5px;
+       
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+   button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+    .btn-add
+    {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-add:hover
+    {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+  .btn-delete {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  width: fit-content;
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+.btn-delete:hover {
+  box-shadow: 0 0 15px rgba(255,75,43,0.8);
+}
+
+    .btn-view {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      font-size: 16px;
+    }
+
+    .btn-view:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    li
+    {
+      background: #f8f9fa;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    li:hover {
+      background: #e9ecef;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 3px;
+    }
+
+    .item-email {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .item-id {
+      font-size: 12px;
+      color: #999;
+      font-family: monospace;
+    }
+
+    .btn-remove {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s ease;
+      width: auto;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    .btn-remove:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255,75,43,0.7);
+}
+
+    .btn-remove:hover {
+      background: #c82333;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #999;
+      padding: 20px;
+      font-style: italic;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    .complaint-list {
+      margin-top: 15px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .complaint-item {
+      background: #f8f9fa;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+   .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: rgba(255,255,255,0.1);
+  padding: 15px 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: auto;
+}
+
+.logout-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(221, 36, 118, 0.4);
+}
+
+
+    .complaint-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .complaint-body {
+      color: #666;
+      font-size: 13px;
+    }
+
+    .dashboard {
+      display: flex;
+      height: 100vh;
+    
+    }
+    .complaint-date {
+      font-size: 11px;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 10px;
+      }
+     
+    }
+   table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  background: #667eea;
+  color: white;
+  text-align: left;
+padding-left: 15px;
+}
+
+td {
+  padding: 12px;
+  text-align: left;
+padding-left: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+tr:hover {
+  background: rgba(255,255,255,0.1);
+}
+.stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.stat-box h3 {
+  font-size: 28px;
+  color: #00f2fe;
+}
+tr {
+  transition: 0.2s;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 420px;
+  background: #f8fafc;
+  padding: 32px 30px;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 14px;
+  font-size: 26px;
+  color: #0f172a;
+}
+
+.modal-content p {
+  margin-bottom: 22px;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.close-modal {
+  border: none;
+  background: #1d4ed8;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 15px;
+}
+  </style>
+</head>
+<body>
+  <div class="header">
+  <div>
+    <h1>📊 Admin Dashboard</h1>
+    <p style="margin: 0; font-size: 14px; color: #f8fafc;">Welcome, <span id="adminEmail"></span></p>
+  </div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+  <div id="welcomeModal" class="modal">
+    <div class="modal-content">
+      <h2>Welcome</h2>
+      <p id="welcomeText">Hello, <strong id="modalAdminEmail"></strong></p>
+      <button class="close-modal" onclick="closeWelcomeModal()">Continue</button>
+    </div>
+  </div>
+ 
+  <div class="container">
+    
+   
+    <!-- MANAGE SELLERS -->
+    <div class="card">
+      <h2>👥 Manage Sellers</h2>
+     
+
+<table border="1">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Smartcard</th>
+<th>Hostel</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="sellerTable"></tbody>
+
+</table>
+      <button class="btn-delete" id="deleteSellers">Delete All Sellers</button>
+      <ul id="sellerList">
+      </ul>
+      </div>
+
+    <!-- MANAGE BUYERS -->
+    <div class="card">
+      <h2>🛒 Manage Buyers</h2>
+     
+      <table border="1">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Smartcard</th>
+<th>Hostel</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="buyerTable"></tbody>
+
+</table>
+<button class="btn-delete" id="deleteBuyers">Delete All Buyers</button>
+    </div>        
+    <!-- MANAGE PRODUCTS -->
+    <div class="card">
+      
+<h2>📦 Manage Products</h2>
+
+<table border="1">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Price</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Seller</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="productTable"></tbody>
+
+</table>
+
+<button class="btn-delete" id="deleteProducts">Delete All Products</button>
+
+</div>
+    <!-- SUPPORT -->
+    <div class="card">
+      <h2>💬 Support Center</h2>
+      
+     <div class="complaint-list" id="complaintList"></div>
+      </div>
+    
+ <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+async function loadSellers() {
+
+  try {
+    const response = await fetch("http://localhost:3000/admin/sellers",{
+       credentials:"include"
+    });
+    const sellers = await response.json();
+
+    const table = document.getElementById("sellerTable");
+
+    table.innerHTML = "";
+
+    sellers.forEach(seller => {
+
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+          <td>${seller.seller_id}</td>
+          <td>${seller.name}</td>
+          <td>${seller.email}</td>
+          <td>${seller.smartcard_id}</td>
+          <td>${seller.hostel}</td>
+          <td>
+            <button onclick="deleteSeller('${seller.seller_id}')" class="btn-remove">
+            Remove
+          </button>
+        </td>
+      `;
+
+       table.appendChild(row);
+
+       });
+        document.getElementById("totalSellers").innerText = sellers.length;
+
+     }
+    
+
+     catch(error){
+      console.log("Error fetching sellers:", error);
+    }
+
+    }
+
+
+ loadSellers();
+
+  
+async function loadBuyers() {
+
+try {
+
+const response = await fetch("http://localhost:3000/admin/buyers",{
+credentials:"include"
+});
+
+const buyers = await response.json();
+
+const table = document.getElementById("buyerTable");
+
+table.innerHTML = "";
+
+buyers.forEach(buyer => {
+
+const row = document.createElement("tr");
+
+row.innerHTML = `
+<td>${buyer.buyer_id}</td>
+<td>${buyer.name}</td>
+<td>${buyer.email}</td>
+<td>${buyer.smartcard_id}</td>
+<td>${buyer.hostel}</td>
+<td>
+<button onclick="deleteBuyer('${buyer.buyer_id}')" class="btn-remove">
+Remove
+</button>
+</td>
+`;
+
+table.appendChild(row);
+
+});
+document.getElementById("totalBuyers").innerText = buyers.length;
+}
+
+catch(error){
+console.log("Error fetching buyers:", error);
+}
+
+}
+loadBuyers();
+async function loadProducts() {
+
+try {
+
+const response = await fetch("http://localhost:3000/admin/products", {
+credentials: "include"
+});
+
+const products = await response.json();
+
+const table = document.getElementById("productTable");
+
+table.innerHTML = "";
+
+products.forEach(product => {
+
+const row = document.createElement("tr");
+row.innerHTML = `
+<td>${product.product_id}</td>
+<td>${product.product_name}</td>
+<td>${product.price}</td>
+<td>${product.description}</td>
+<td>${product.quantity}</td>
+<td>${product.seller_id}</td>
+<td><img src="http://localhost:3000/images/${product.image}" width="50"></td>
+<td>
+<button onclick="deleteProduct('${product.product_id}')" class="btn-remove">
+Remove
+</button>
+</td>
+`;
+table.appendChild(row);
+
+});
+document.getElementById("totalProducts").innerText = products.length;
+}
+
+catch (error) {
+console.log("Error fetching products:", error);
+}
+
+}
+
+loadProducts();
+
+//**************** support center********************
+async function loadComplaints() {
+  try {
+    const res = await fetch("http://localhost:3000/api/admin/complaints", {
+      credentials: "include"
+    });
+
+   if (!res.ok) {
+  console.error("API failed:", res.status);
+  return;
+}
+
+const complaints = await res.json();
+console.log("Complaints Data:", complaints); // ✅ DEBUG
+
+    const container = document.getElementById("complaintList");
+    container.innerHTML = "";
+
+    if (complaints.length === 0) {
+      container.innerHTML = `<p class="empty-state">No complaints found</p>`;
+      return;
+    }
+
+    complaints.forEach(c => {
+      const div = document.createElement("div");
+      div.className = "complaint-item";
+div.innerHTML = `
+  <div class="complaint-header">
+    Buyer: ${c.buyer_id || c.buyerId} | Product: ${c.product || c.product_id}
+  </div>
+
+  <div class="complaint-body">
+    <b>Type:</b> ${c.type || "N/A"} <br>
+    <b>Message:</b> ${c.text || c.description}
+  </div>
+
+  <div class="complaint-date">
+    ${c.date || c.created_at}
+  </div>
+<button onclick="resolveComplaint(${c.id})" class="btn-remove">
+  Resolve
+</button>
+`;
+     
+      container.appendChild(div);
+    });
+
+  } catch (err) {
+    console.log("Error loading complaints:", err);
+  }
+}
+loadComplaints();
+  /* ===== SESSION CHECK ===== */
+  async function checkSession() {
+    try {
+      const res = await fetch("http://localhost:3000/check-session", {
+        credentials: "include"
+      });
+      const data = await res.json();
+
+      if (!data.loggedIn || data.user.role !== "admin") {
+        window.location.replace("novaconnect_2ndpage.html");
+        return;
+      }
+
+      document.getElementById("adminEmail").textContent = data.user.email;
+      document.getElementById("modalAdminEmail").textContent = data.user.email;
+      document.getElementById("welcomeModal").classList.add("show");
+    } catch (err) {
+      window.location.replace("novaconnect_2ndpage.html");
+    }
+  }
+
+  window.closeWelcomeModal = function () {
+    document.getElementById("welcomeModal").classList.remove("show");
+  };
+
+  /* ===== LOGOUT ===== */
+  window.logout = async function () {
+    try {
+      await fetch("http://localhost:3000/logout", {
+        method: "POST",
+        credentials: "include"
+      });
+
+      localStorage.clear();
+      sessionStorage.clear();
+
+      window.location.href = "login.html";
+    } catch (err) {
+      alert("Logout failed");
+    }
+  };
+
+  
+
+  /* ===== DELETE ALL ===== */
+ document.getElementById("deleteSellers").onclick = async () => {
+  if (!confirm("Delete ALL sellers?")) return;
+  if (!confirm("Are you sure? This cannot be undone!")) return;
+
+  try {
+    await fetch("http://localhost:3000/admin/delete-all-sellers", {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    loadSellers();
+  } catch (err) {
+    console.log("Error deleting sellers:", err);
+  }
+};
+
+  document.getElementById("deleteBuyers").onclick = async () => {
+  if (!confirm("Delete ALL buyers?")) return;
+  if (!confirm("Are you sure? This cannot be undone!")) return;
+  try {
+    await fetch("http://localhost:3000/admin/delete-all-buyers", {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    loadBuyers();
+  } catch (err) {
+    console.log("Error deleting buyers:", err);
+  }
+};
+  document.getElementById("deleteProducts").onclick = async () => {
+  if (!confirm("Delete ALL products?")) return;
+  if (!confirm("Are you sure? This cannot be undone!")) return;
+  try {
+    await fetch("http://localhost:3000/admin/delete-all-products", {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    loadProducts(); // reload table
+  } catch (err) {
+    console.log("Error deleting all products:", err);
+  }
+};
+loadComplaints();
+
+  /* ===== INITIAL CHECK ===== */
+  checkSession();
+});
+
+window.deleteSeller = async function (id){
+
+if(!confirm("Delete this seller?")) return;
+
+try{
+
+await fetch(`http://localhost:3000/admin/delete-seller/${id}`,{
+method:"DELETE",
+credentials:"include"
+});
+
+await loadSellers();
+
+}catch(error){
+console.log("Delete error:",error);
+}
+
+}
+
+
+window.deleteBuyer = async function (id){
+
+if(!confirm("Delete this buyer?")) return;
+
+try{
+
+await fetch(`http://localhost:3000/admin/delete-buyer/${id}`,{
+method:"DELETE",
+credentials:"include"
+});
+
+await loadBuyers();
+
+}catch(error){
+console.log("Delete error:",error);
+}
+
+}
+window.deleteProduct = async function (id){
+console.log("Delete clicked for product:", id);
+if(!confirm("Delete this product?")) return;
+
+try{
+
+const res = await fetch(`http://localhost:3000/admin/delete-product/${id}`,{
+method:"DELETE",
+credentials:"include"
+});
+const data = await res.json();   
+console.log(data);   
+await loadProducts();
+
+}catch(error){
+console.log("Delete error:",error);
+}
+
+}
+
+//**************************supprt center*************
+window.resolveComplaint = async function(id) {
+  if (!confirm("Mark this complaint as resolved?")) return;
+
+  try {
+    const res = await fetch(`http://localhost:3000/api/admin/complaints/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Failed to resolve complaint");
+      return;
+    }
+
+    alert(data.message || "Complaint resolved");
+    loadComplaints();
+
+  } catch (err) {
+    console.log("Resolve error:", err);
+  }
+};
+
+</script>
+
+</body>
+</html>

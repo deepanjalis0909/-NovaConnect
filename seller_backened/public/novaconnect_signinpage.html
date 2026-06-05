@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url("images/bg.jpg") center/cover no-repeat;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffffdd;
+      padding: 30px 25px;   
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      max-width: 380px; 
+      width: 100%;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      color: #333;
+      text-align: center;
+    }
+
+    .signup-box {
+      text-align: left;
+    }
+
+    .signup-box h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #444;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 12px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px; 
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #2575fc;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .signup-btn:hover {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .links a {
+      font-size: 13px;
+      color: #2575fc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .links a:hover {
+      color: #6a11cb;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-group select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      background: white;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-group select:focus {
+      border-color: #2575fc;
+    }
+  .input-group {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+
+
+.input-group input {
+  width: 100%;
+  padding: 8px 38px 8px 8px;  /* space for eye icon */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+ .password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 8px 38px 8px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.password-wrapper {
+  width: 100%;
+}
+
+
+
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+  font-size: 15px;
+}
+
+.eye-btn:hover {
+  color: #2575fc;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+
+  </style>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+</head>
+<body>
+  <div class="container">
+    <h1>NovaConnect</h1>
+    <div class="signup-box">
+      <h2>Create Account</h2>
+      <form id="Form">
+
+        <div class="input-group">
+          <label for="name">Full Name<span class="required">*</label>
+          <input type="text" id="name" placeholder="Enter your full name" required>
+        </div>
+        
+        <div class="input-group">
+        <label for="email">Email<span class="required">*</label>
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="Enter your Banasthali email"
+          pattern="^[a-zA-Z0-9._%+-]+@banasthali\.in$"
+          title="Email must end with @banasthali.in"
+          required
+        >
+</div>
+         <div class="input-group">
+          <label for="smartcard_id">Smartcard_Id<span class="required">*</label>
+          <input type="text" id="smartcard_id" placeholder="Enter your Smartcard_Id" required>
+        </div>
+       <div class="input-group">
+          <label for="hostel">Hostel<span class="required">*</label>
+          <select id="hostel" required>
+            <option value="">-- Select Hostel --</option>
+            <option value="Bhuwnam">Bhuwnam</option>
+            <option value="Vasam">Vasam</option>
+            <option value="Nishantam">Nishantam</option>
+            <option value="Teertham">Teertham</option>
+            <option value="Sadam">Sadam</option>
+            <option value="Inam">Inam</option>
+            <option value="Neri">Neri</option>
+            <option value="Uthjam">Uthjam</option>
+            <option value="Vasati">Vasati</option>
+          </select>
+      </div>
+
+        <div class="input-group">
+  <label for="password">Password<span class="required">*</label>
+  <div class="password-wrapper">
+    <input type="password" id="password" placeholder="Enter your password" required>
+    <i class="fa-solid fa-eye eye-btn" onclick="togglePassword('password', this)"></i>
+  </div>
+</div>
+
+       <div class="input-group">
+  <label for="confirm-password">Confirm Password<span class="required">*</label>
+  <div class="password-wrapper">
+    <input type="password" id="confirm-password" placeholder="Re-enter your password" required>
+    <i class="fa-solid fa-eye eye-btn" onclick="togglePassword('confirm-password', this)"></i>
+  </div>
+</div>
+
+        <button type="submit" class="signup-btn">Create   Account</button>
+      </form>
+    </div>
+  </div>
+<script>
+const params = new URLSearchParams(window.location.search);
+const role = params.get("role");
+    function togglePassword(inputId, icon) {
+      const input = document.getElementById(inputId);
+
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    }
+document.getElementById("Form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const smartcard_id = document.getElementById("smartcard_id").value;
+  const hostel = document.getElementById("hostel").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  const easyPasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+if (!easyPasswordRegex.test(password)) {
+  alert("Password must be at least 8 characters and contain letters and numbers.");
+  return;
+}
+      const nameRegex = /^[A-Za-z\s]+$/;
+
+      if (!nameRegex.test(name)) {
+        alert("Name should not contain numbers or special characters");
+        return;
+      }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+  const banasthaliRegex = /^[a-zA-Z0-9._%+-]+@banasthali\.in$/;
+  if (!banasthaliRegex.test(email)) {
+    alert("Please use your Banasthali email (example@banasthali.in)");
+    return;
+ }
+  const data = { name, email, smartcard_id, hostel, password };
+
+  let registerUrl = "";
+
+  if (role === "seller") {
+    registerUrl = "http://localhost:3000/seller/register";
+  } else if (role === "buyer") {
+    registerUrl = "http://localhost:3000/buyer/register";
+  } else {
+    alert("Invalid signup role");
+    return;
+  }
+
+  try {
+    const response = await fetch(registerUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    // Parse JSON, not text
+    const result = await response.json();
+
+    if (response.ok) {
+      alert(result.message);
+      
+      if (role === "seller") {
+        alert("seller");
+        window.location.href = "shalviseller.html";
+        
+
+      } else if (role === "buyer") {
+        window.location.href = "buyer_dashboard.html"; 
+      }
+    } else {
+      alert(result.message || "Registration failed");
+    }
+
+    document.getElementById("Form").reset();
+
+  } catch (err) {
+    console.error("FETCH ERROR:", err);
+    alert("Error connecting to server");
+  }
+});
+</script>
+
+</body>
+</html

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaConnect - Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("C:/Users/deepa/OneDrive/Pictures/Screenshots/Screenshot 2026-01-04 202255.png") center/cover no-repeat;
+      padding: 20px;
+    }
+
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+
+    .logo {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: -0.5px;
+    }
+
+
+    .subtitle {
+      color: #475569;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+
+    .label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+
+
+    .input-wrapper {
+      position: relative;
+    }
+
+
+    .input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+
+    .input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+
+    .input::placeholder {
+      color: #94a3b8;
+    }
+
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #64748b;
+      padding: 4px;
+    }
+
+
+    .password-toggle:hover {
+      color: #334155;
+    }
+
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: #3b82f6;
+      cursor: pointer;
+    }
+
+
+    .checkbox-label {
+      font-size: 14px;
+      color: #475569;
+      cursor: pointer;
+    }
+
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px -10px rgba(59, 130, 246, 0.5);
+    }
+
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+
+    .footer a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Eye icon SVG */
+    .eye-icon {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="header">
+      <img src="C:\Users\deepa\OneDrive\Pictures\Screenshots\Screenshot 2026-01-05 141107.png" alt="NovaConnect Logo" class="logo">
+      <h1 class="title">NovaConnect</h1>
+      <p class="subtitle">By students, For students</p>
+    </div>
+
+
+    <form id="Form">
+      <div class="form-group">
+        <label class="label">Name</label>
+        <input type="text" class="input" placeholder="Enter your name">
+      </div>
+
+
+      <div class="form-group">
+        <label class="label">Banasthali Email</label>
+        <input type="email" id="name" class="input" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label class="label">Smartcard ID</label>
+        <input type="Text" class="input" placeholder="Enter your Smartcard ID">
+      </div>
+      <div class="form-group">
+        <label class="label">Hostel</label>
+        <input type="text" class="input" placeholder="Enter your hostel">
+      </div>
+
+
+      <div class="form-group">
+        <label class="label">Password</label>
+        <div class="input-wrapper">
+          <input type="password" class="input" placeholder="Enter your password" style="padding-right: 44px;">
+          <button type="button" class="password-toggle">
+            <svg class="eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="label">Confirm Password</label>
+        <div class="input-wrapper">
+          <input type="password" class="input" placeholder="Confirm your password" style="padding-right: 44px;">
+          <button type="button" class="password-toggle">
+            <svg class="eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="remember" class="checkbox">
+        <label for="remember" class="checkbox-label">Remember me</label>
+      </div>
+
+
+      <button type="submit" class="submit-btn">Sign In</button>
+    </form>
+
+
+    <p class="footer">
+      Don't have an account? <a href="login(final).html">Sign up</a>
+    </p>
+  </div>
+  <script>
+const params = new URLSearchParams(window.location.search);
+const role = params.get("role"); // seller | buyer
+
+document.getElementById("Form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const hostel = document.getElementById("hostel").value;
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+
+ const data = { name, hostel, email, password };
+
+
+  let registerUrl = "";
+
+  if (role === "seller") {
+    registerUrl = "http://localhost:3000/seller/register";
+  } else if (role === "buyer") {
+    registerUrl = "http://localhost:3000/buyer/register";
+  } else {
+    alert("Invalid signup role");
+    return;
+  }
+
+  try {
+    const response = await fetch(registerUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.text();
+    alert(result);
+
+    document.getElementById("Form").reset();
+
+  } catch (err) {
+    console.error("FETCH ERROR:", err);
+    alert("Error connecting to server");
+  }
+});
+</script>
+</body>
+</html>

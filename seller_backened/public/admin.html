@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - College Startup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .card h2 {
+      color: #667eea;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-add {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-add:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-delete {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+    }
+
+    .btn-delete:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+    }
+
+    .btn-view {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      font-size: 16px;
+    }
+
+    .btn-view:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    li {
+      background: #f8f9fa;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    li:hover {
+      background: #e9ecef;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 3px;
+    }
+
+    .item-email {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .item-id {
+      font-size: 12px;
+      color: #999;
+      font-family: monospace;
+    }
+
+    .btn-remove {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.3s ease;
+      width: auto;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .btn-remove:hover {
+      background: #c82333;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #999;
+      padding: 20px;
+      font-style: italic;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    .complaint-list {
+      margin-top: 15px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .complaint-item {
+      background: #f8f9fa;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+
+    .complaint-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .complaint-body {
+      color: #666;
+      font-size: 13px;
+    }
+
+    .complaint-date {
+      font-size: 11px;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Admin Dashboard</h1>
+  
+  <div class="container">
+    <!-- MANAGE SELLERS -->
+    <div class="card">
+      <h2>👥 Manage Sellers</h2>
+      <input id="sellerName" placeholder="Enter Seller Name">
+      <input id="sellerEmail" placeholder="Enter Email Address">
+      <button class="btn-add">Add Seller</button>
+      <button class="btn-delete">Delete All Sellers</button>
+      <ul id="sellerList">
+        <li>
+          <div class="item-info">
+            <div class="item-name">John Smith</div>
+            <div class="item-email">john.smith@example.com</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+        <li>
+          <div class="item-info">
+            <div class="item-name">Sarah Johnson</div>
+            <div class="item-email">sarah.j@example.com</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MANAGE BUYERS -->
+    <div class="card">
+      <h2>🛒 Manage Buyers</h2>
+      <input id="buyerName" placeholder="Enter Buyer Name">
+      <input id="buyerEmail" placeholder="Enter Email Address">
+      <button class="btn-add">Add Buyer</button>
+      <button class="btn-delete">Delete All Buyers</button>
+      <ul id="buyerList">
+        <li>
+          <div class="item-info">
+            <div class="item-name">Michael Brown</div>
+            <div class="item-email">michael.b@example.com</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+        <li>
+          <div class="item-info">
+            <div class="item-name">Emily Davis</div>
+            <div class="item-email">emily.davis@example.com</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+        <li>
+          <div class="item-info">
+            <div class="item-name">David Wilson</div>
+            <div class="item-email">d.wilson@example.com</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MANAGE PRODUCTS -->
+    <div class="card">
+      <h2>📦 Manage Products</h2>
+      <input id="productName" placeholder="Enter Product Name">
+      <input id="productId" placeholder="Enter Product ID">
+      <button class="btn-add">Add Product</button>
+      <button class="btn-delete">Delete All Products</button>
+      <ul id="productList">
+        <li>
+          <div class="item-info">
+            <div class="item-name">Laptop Stand</div>
+            <div class="item-id">ID: PROD-001</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+        <li>
+          <div class="item-info">
+            <div class="item-name">Wireless Mouse</div>
+            <div class="item-id">ID: PROD-002</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+        <li>
+          <div class="item-info">
+            <div class="item-name">USB-C Hub</div>
+            <div class="item-id">ID: PROD-003</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+        <li>
+          <div class="item-info">
+            <div class="item-name">Desk Organizer</div>
+            <div class="item-id">ID: PROD-004</div>
+          </div>
+          <button class="btn-remove">Remove</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="card">
+      <h2>💬 Support Center</h2>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Complaints</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Products</div>
+        </div>
+      </div>
+      
+      <div class="complaint-list">
+        <div class="complaint-item">
+          <div class="complaint-header">🔴 John Doe</div>
+          <div class="complaint-body">Product not delivered on time. Expected delivery was 3 days ago.</div>
+          <div class="complaint-date">Date: 2026-01-05</div>
+        </div>
+        <div class="complaint-item">
+          <div class="complaint-header">🔴 Jane Smith</div>
+          <div class="complaint-body">Wrong item received. Ordered a blue item but received red.</div>
+          <div class="complaint-date">Date: 2026-01-06</div>
+        </div>
+        <div class="complaint-item">
+          <div class="complaint-header">🔴 Alice Johnson</div>
+          <div class="complaint-body">Payment issue - refund not received after 7 days.</div>
+          <div class="complaint-date">Date: 2026-01-07</div>
+        </div>
+        <div class="complaint-item">
+          <div class="complaint-header">🔴 Bob Wilson</div>
+          <div class="complaint-body">Product quality concerns. Item arrived damaged.</div>
+          <div class="complaint-date">Date: 2026-01-07</div>
+        </div>
+        <div class="complaint-item">
+          <div class="complaint-header">🔴 Carol Martinez</div>
+          <div class="complaint-body">Customer service response time is too slow. No reply in 48 hours.</div>
+          <div class="complaint-date">Date: 2026-01-06</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
