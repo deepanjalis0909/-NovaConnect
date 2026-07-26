@@ -1,10 +1,10 @@
-# 🚀 NovaConnect
+# NovaConnect
 
 **NovaConnect** is a community-driven marketplace platform designed to empower student entrepreneurs by providing a dedicated space to showcase, promote, and sell their products within a trusted community ecosystem.
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 
 Many students create innovative products such as handmade crafts, jewelry, artwork, candles, customized gifts, and digital services but struggle to find customers.
 
@@ -16,9 +16,9 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🛒 Buyer Features
+### Buyer Features
 
 * Browse products from student sellers
 * Search and filter products by category
@@ -26,7 +26,7 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 * Submit ratings and reviews
 * Raise complaints and support requests
 
-### 🏪 Seller Features
+### Seller Features
 
 * Seller registration and profile management
 * Add, edit, and delete products
@@ -34,7 +34,7 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 * Track customer interactions
 * View customer reviews and feedback
 
-### ⚙️ Admin Features
+### Admin Features
 
 * Manage buyers and sellers
 * Review and resolve complaints
@@ -44,7 +44,7 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Category          | Technologies            |
 | ----------------- | ----------------------- |
@@ -89,7 +89,7 @@ NovaConnect solves this problem by offering a centralized marketplace where:
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -135,7 +135,7 @@ http://localhost:3000/novaconnect_2ndpage.html
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 NOVACONNECT/
@@ -167,7 +167,7 @@ NOVACONNECT/
 
 ---
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
 * Real-time buyer-seller chat
 * Online payment gateway integration
@@ -175,7 +175,7 @@ NOVACONNECT/
 
 ---
 
-## 💡 Learning Outcomes
+## Learning Outcomes
 
 This project helped us gain practical experience in:
 
@@ -188,7 +188,7 @@ This project helped us gain practical experience in:
 
 ---
 
-## 👥 Team Members
+## Team Members
 
 * Deepanjali
 * Shalvi Rastogi 
